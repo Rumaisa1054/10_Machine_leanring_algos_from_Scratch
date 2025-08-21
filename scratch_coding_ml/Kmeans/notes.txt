@@ -1,0 +1,9 @@
+Kmeans is unsupervised ML Algorithm.Its an iterative algorithm
+
+Step : 01 : Initialize cluster centers (initially randomly)
+Step : 02 : Repeat Until converged
+- Update cluster labels : Assign points to closest  cluster center (centroid)
+- Update cluster centers (centroid): Set center to mean of each cluster
+
+Euclidean Distance:
+d(p,q) = math.sqrt(np.sum(pi-pq)**2)

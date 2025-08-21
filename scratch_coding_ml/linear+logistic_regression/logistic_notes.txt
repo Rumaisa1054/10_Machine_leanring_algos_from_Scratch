@@ -1,0 +1,29 @@
+In linear regression, we assume that our  data has a linear pattern so we
+can model it using y_predicted_i = wx_i + b line but what if our data has a
+non-linear relationship.
+
+In that case we may use logistic regression so our fcuntion of the line becomes
+y = h_not(x_i) = 1 / 1 + (e raised to power -wx_i + b)
+
+In linear regression we use the mean square error but In logistic regression we use
+cross entropy
+
+J(w,b) = J(theta) = (1/N) sum(x)
+where
+x = y_ilog(h_not(x_i)) + (1-y_i)log(1-h_not(x_i))
+
+Gradient of above loss function J(w,b) is
+
+dJ/dw = (1/N) sum (2*x_i)(y_pred_i - y_i)
+dJ/db = (1/N) sum (2)(y_pred_i - y_i)
+
+w = w - (aplha)*dJ/dw
+b = b - (alpha)*dJ/db
+
+Steps: 01
+Initialixe weights and bais as zeros
+Step : 02
+y_pred_i = 1 / 1 + (e raised to power -wx_i + b)
+Step:03
+sue gradient to find new bais and weights
+Step : 04 repeat n times

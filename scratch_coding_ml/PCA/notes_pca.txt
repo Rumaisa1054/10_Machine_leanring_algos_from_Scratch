@@ -1,0 +1,18 @@
+In PCA - we decompose our dimension into lesser ones by maximizing the
+variance to capture the data intricacies in bext way possible
+
+Var(X) = 1/n sum( X_i - X_bar)**2)
+Covariance of 2 features : (X,Y) = 1/n (X_i - X_bar)((Y_i - Y_bar).T)
+
+Next we cn calculate the eigen values nad eigen vectors of this cov_matrix and
+select the no of eigen vectors having thr highest variance = how
+many dimensions we want in resulting data. These eigen vectors and eigen values
+point in direction of highest varinace
+
+Step : 01
+Subract the mean from X
+Calculate the cov of all columns with each other
+calculate the eigen values and eigen vectors of this cov
+sort these vectors in dec order of eigen values
+choose first k eigen vect which would be the new  k dimensions
+transform the n- dimensioned data to k-dimensioned data -> projection with dot

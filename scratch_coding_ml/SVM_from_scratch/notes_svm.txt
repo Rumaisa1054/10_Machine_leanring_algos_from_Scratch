@@ -1,0 +1,77 @@
+# SVM classifier Notes - supervised learning model -
+# In svm when we need to find the non linear relationship we may need to increase the dimension of our hyperplane y = mx + c where the  hyperplane is our line that separete the data into 2 classes
+
+support vectors are the data_points that are nearest to the hyperplane
+
+Margin the the distance of support vectors from the hyperplane _ we try to find a hyperplane whose margin is max from all the support vectors so that we have a good cushion or tolerance value
+
+when we donot have a linearly separable data we will use a kernel to transform the data to high dimensions so that our svm captures the relationship in higher dimensions
+
+SVM works well when there is a clear margin of   separation_ its good for small datasets and dataset having high dimensions _ its not suitable for large datasets _ its not good for noiser dataset which have overlapping classes
+
+The equation of my hyperplane : y = mx + b where
+m = slope
+b = bais
+y is target feature
+x is input features
+
+We have to find the best values for m and b, we do this using gradient descent algorithm. Gradient descent is the an optimization algorithm used for minimizing the loss function by updating the weights and bais
+w = w - alpha(delta_w)
+b = b - alpha(delta_b)
+
+where alpha is our learning rate. Its a tuning parameter in the gradient descent algorithm that determines the step size in each iteration toward minimum of the loss function
+
+now In SVM we do this
+if wx + b >= 1 and y_actual == 1 (we say it belongs to class 1)
+if wx+b <= -1 and y_actual == -1( we say it belongs to class 2)
+for a point on decision_boudary/hyperplane wx + b == 0
+In short yi.(wx + b) >= 1 with y = {-1,1}
+
+margin can be calculated as 2/magnitude(w)
+since we use gradient descent algorithm that works for the minimum loss function - we need to actually find the loss every single time to find what loss we have at this moment and if we are working towards reducing it or not
+
+one such loss function is HINGE loss function
+where loss = max(0,1-yi(w*x_i+b))
+if y_i = 1 and w*x_i+b == -1 then loss = max(0,1-(1*-1)) = max(0,2) = 2
+if y_i = 1 and w*x_i+b == 1 then loss = max(0,1-(1*1)) = max(0,0) = 0
+if y_i = -1 and w*x_i+b == 1 then loss = max(0,1-(-1*1)) = max(0,2) = 2
+if y_i = -1 and w*x_i+b == -1 then loss = max(0,1-(-1*-1))= max(0,0) = 0
+
+Notice that when predicted output w*x_i+b for a datapoint is same as the expected loss is 0 and otherwise loss is non-0
+
+difference between loss and cost
+loss is difference in predicted and expected for one training datapoint - cost is summ of loss of all datapoints in a dataset
+
+Adding regularization on top of this - cost for whole data is
+cost = (lambda* magnitude(w)**2)  + (sum of all losses/n)
+
+In other words cost for one datapoint is
+if y_i * (w*x_i+b) >= 1:
+    cost_i = (lambda* magnitude(w)**2)
+else:
+    cost_i = (lambda* magnitude(w)**2) + (1 - y_i * (w*x_i+b))
+
+Using these cost functions lets find the gradients i.e dL/dw
+Derivative(cost)/w for one datapoint is
+if y_i * (w*x_i+b) >= 1:
+    d(cost_i)/w = 2(lambda* magnitude(w))
+    d(cost_i)/b = 0
+else:
+    d(cost_i)/w = 2(lambda* magnitude(w)) - (y_i * x_i)
+    d(cost_i)/b = y_i
+
+Updation rule
+w = w - alpha(delta_w)
+b = b - alpha(delta_b)
+So
+if y_i * (w*x_i+b) >= 1:
+    Since d(cost_i)/w = 2(lambda* magnitude(w))
+    Since d(cost_i)/b = 0
+    w = w - alpha * 2(lambda* magnitude(w))
+    b = b - alpha(delta_b) =  b
+else:
+    Since d(cost_i)/w = 2(lambda* magnitude(w)) - (y_i * x_i)
+    Since d(cost_i)/b = y_i
+    w = w - alpha * (2(lambda* magnitude(w)) - (y_i * x_i))
+    b = b - alpha(delta_b) =  b - alpha*y_i
+'''

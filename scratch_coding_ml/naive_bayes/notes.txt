@@ -1,0 +1,36 @@
+Naive bayes is a probablistic classifer that uses the bayes theorem with
+strong independence assumptions between the features
+
+Bayes theorem :
+P(A/B) = P(B/A) * P(A) / P(B)
+
+In our case
+P(y/X) = P(X/y) * P(y) / P(X) where
+y = class varibale / target
+X = input features [x1,,x2,x3,x4 ...]
+
+or
+p(y/X) = p(x1/Y) * p (x2/y) * ... P(xn/y) * p (y) / p(X)
+
+we get rid of P(X) bcs it doesnot depend on y at all
+p(y/X) = p(x1/Y) * p (x2/y) * ... P(xn/y) * p (y)
+Now whenwe calculate the p(y/X) = p(x1/Y) * p (x2/y) * ... P(xn/y) it gets smaller
+and smaller so we apply the trick
+y = argmax_y(p(y/X))
+where p(y/X) =  log(p(x1/Y)) + log(p(x2/y)) + ... + log(P(xn/y)) + log(p(Y)) --- > also called posterior
+and p(y) = frequency of each class
+and P(x_i/y) = class conditional probability  ---> Model with gaussian formula given by
+
+P(x_i/y) = 1/sqrt(2(pi)(SD(y)**2) * exp(-(x_i - (mean(y))**2)/2(SD(y)**2)) -- Gaussian formula
+P(x_i/y) = 1/sqrt(2(pi)(var) * exp(-(x_i - (mean(y))**2)/2(var[y])) -- Gaussian formula
+
+Steps: 01 Training
+calculate the mean(y) , sd(y) and p(y) = frequency of each class
+
+Step : 02
+Calculated the posterior for each class with
+p(y/X) =  log(p(x1/Y)) + log(p(x2/y)) + ... + log(P(xn/y)) + log(p(Y))
+using the  Gaussian formula
+
+Step : 03
+Choose class with highest posterior probablity

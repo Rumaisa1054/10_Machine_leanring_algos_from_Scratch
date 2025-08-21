@@ -1,0 +1,12 @@
+In random forest - we create as many decision trees
+as we can and then get predictions from eachof them
+
+Training :
+Given the whole dataset - create subsets of this dataset = no of decision tree you want
+Create a decision tree for each of them
+
+Testing:
+given a datapoint:
+get prediction from each tree
+classification : hold a  majority vote
+regression : get the mean of predtions

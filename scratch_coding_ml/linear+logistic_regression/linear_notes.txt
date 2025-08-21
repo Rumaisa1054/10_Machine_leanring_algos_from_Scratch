@@ -1,0 +1,14 @@
+In linear regression, we assume that our  data has a linear pattern so we can model it using y_predicted_i = wx_i + b line
+# Mean square error = sum((y_actual_i - y_predicted_i)**2)/N
+which is
+# Mean square error = sum((y_actual_i - (wx_i+b))**2)/N
+
+dL/w = 1/N (2(y_i-(wx+b)) (-x_i)
+dL/b = 1/N(2(y_i - (wx+b)) (1)
+
+since
+w = w - alpha(dL/w)
+w = w - alpha (1/N) (-x_i)(2)(y_i-(wx+b))
+b = b - alpha(dL/b)
+b = b - alpha (1/N)(2)(y_i-(wx+b))
+

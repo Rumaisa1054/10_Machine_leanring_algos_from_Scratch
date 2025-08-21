@@ -1,0 +1,28 @@
+The decision trees use trees to segment data as we go down towards to the roots -
+therefore roots have pure classes samples. There are different things we needs to
+consider in the branching
+
+split feature
+split point
+when to stop splitting
+Training stepes
+Steps : 01 : Calculate information gain with each possible split
+step : 02 divide dataset with feature and value with highest gain
+step  03 : Divide tree and do the same for all created branches
+step : 04 until the stopping criteria is reached
+Testing steps
+step : 01 Follow the tree until you reach a  leaf node
+step : 02 return the most common class label if leaf_node is not pure else return the class
+
+Information gain:
+IG = E(parent) - [weighted_avg] E(child) where E = entropy of
+
+Entropy is lack of order -Entropy of root node is higher than entropy of leaf nodes.
+If a node has 50 - 50 proportion of each class label entropy is going to be the highest
+in that leaf node
+
+E(x) = - sum( p(X) * log_base_2(p(X))
+
+p(X) = no of times this class label has occured in this node / no of nodes = #x/n
+
+stopping criteria : maximum depth , minimum no of samples a node has, min impurity decrease: min entropy chnage that needs to be satisfied or fulfilled

@@ -1,0 +1,5 @@
+Steps in KNN:
+1. get a data point
+2. Get this datapoints distance from all other datapoints in a distance
+3. get the closest K points - K is a hyper parameter parameter
+4 . in regression - Ans of this = avg of values of all others values In classification - its the majority vote of k neighbors
